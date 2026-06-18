@@ -1,0 +1,44 @@
+body {
+    background-color: rgb(25, 25, 25);
+    font-family: Arial;
+    color: white;
+}
+.title {
+    font-size: 27px;
+    font-weight: bold;
+}
+    .move {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 28px;
+    background-color: transparent;
+    border: 2.5px solid white;
+    border-radius: 60px;
+    margin-right: 6px;
+    }
+
+    .move-icon {
+        height: 46px;
+    }
+        
+    .show {
+        font-size: 25px;
+        font-weight: bold;
+        width: 150px;
+        text-align: center;
+        border: 1px dotted white;
+        
+    }
+
+    .score {
+        margin-top: 50px;
+    }
+
+    .reset-button {
+                border: 0;
+                padding: 9px 15px;
+                font-size: 15px;
+                background-color: rgb(180, 183, 185);
+            }
+    

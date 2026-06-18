@@ -1,0 +1,109 @@
+let computerChoice;
+
+    const score = JSON.parse(localStorage.getItem('save')) || {
+        Wins: 0,
+        Loss: 0,
+        Ties: 0
+    };
+
+    let result;
+    
+    function choice() {
+        let random = Math.random();
+        
+        if (random > 0 && random <= 1/3) {
+            computerChoice = 'rock';
+        } else if (random > 1/3 && random <= 2/3) {
+            computerChoice = 'paper';
+        } else if (random > 2/3 && random <= 1) {
+            computerChoice = 'scissors';
+        }
+    };  
+
+
+    function updateCurrent(variable) {
+   
+    const Current  = document.querySelector('.current');
+    Current.innerHTML = `${result}`;
+
+    const Choice = document.querySelector('.choice');
+    Choice.innerHTML = `You 
+        <img src="icons/${variable}-emoji.png" class="move-icon">
+        VS
+        <img src="icons/${computerChoice}-emoji.png" class="move-icon">
+        Computer`;
+
+
+    
+    const Score = document.querySelector('.score');
+    Score.innerHTML = `Wins: ${score.Wins}, Losses: ${score.Loss}, Ties: ${score.Ties}`
+}
+
+    function playGame(humanChoice) {
+
+         choice();
+
+
+        if (humanChoice === 'rock') {
+
+            if (computerChoice === 'rock') {
+                score.Ties++;
+                result = "Draw!";
+
+            } else if (computerChoice === 'paper') {
+                score.Loss++;
+                result = "You LOST!";
+
+            } else if (computerChoice === 'scissors') {
+                score.Wins++;
+                result = "You WON!";
+            }
+
+
+        } else if (humanChoice === 'paper') {
+
+            if (computerChoice === 'paper') {
+                score.Ties++;
+                result = "Draw!";
+
+            } else if (computerChoice === 'scissors') {
+                score.Loss++;
+                result = "You LOST!";
+
+            } else if (computerChoice === 'rock') {
+                score.Wins++;
+                result = "You WON!";
+            }
+
+
+        } else if (humanChoice === 'scissors') {
+
+            if (computerChoice === 'scissors') {
+                score.Ties++;
+                result = "Draw!";
+
+            } else if (computerChoice === 'rock') {
+                score.Loss++;
+                result = "You LOST!";
+
+            } else if (computerChoice === 'paper') {
+                score.Wins++;
+                result = "You WON!";
+            }
+        }
+        localStorage.setItem('save', JSON.stringify(score));
+
+    }
+  
+function resetScore() {
+    score.Wins = 0;
+    score.Loss = 0;
+    score.Ties = 0;
+    
+    
+    const reset = document.querySelector('.score');
+    reset.innerHTML = `Wins: ${score.Wins}, Losses: ${score.Loss}, Ties: ${score.Ties}`
+    localStorage.removeItem('save');
+    alert("Score Reset!");
+}
+

@@ -5,42 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
 
-    <style>
-        body {
-            background-color: rgb(25, 25, 25);
-            font-family: Arial;
-            color: white;
-        }
-        .title {
-            font-size: 27px;
-            font-weight: bold;
-        }
-            .move {
-            display: inline-flex;
-            align-items: center;
-            cursor: pointer;
-            padding: 28px;
-            background-color: transparent;
-            border: 2.5px solid white;
-            border-radius: 60px;
-            margin-right: 6px;
-            }
-
-            .move-icon {
-                height: 46px;
-            }
-                
-            .show {
-                font-size: 25px;
-                font-weight: bold;
-                width: 150px;
-                text-align: center;
-                border: 1px dotted white;
-                
-            }
-
-            .score {margin-top: 50px;}
-    </style>
+    <link rel="styelsheet" src="style.css">
 </head>
 
 <body>
@@ -56,126 +21,15 @@
     updateCurrent('scissors');"><img src="icons/scissors-emoji.png" class="move-icon"></button>
 
     <p class="current show">
-        Start!
+        Start &uarr;
     </p>
     <p class="choice">
          
     </p>
     <p class="score"></p>
     <button onclick="resetScore()">Reset score</button>
-<script>
-
-    let computerChoice;
-
-    const score = JSON.parse(localStorage.getItem('save')) || {
-        Wins: 0,
-        Loss: 0,
-        Ties: 0
-    };
-
-    let result;
     
-    function choice() {
-        let random = Math.random();
-        
-        if (random > 0 && random <= 1/3) {
-            computerChoice = 'rock';
-        } else if (random > 1/3 && random <= 2/3) {
-            computerChoice = 'paper';
-        } else if (random > 2/3 && random <= 1) {
-            computerChoice = 'scissors';
-        }
-    };  
-
-
-    function updateCurrent(variable) {
-   
-    const Current  = document.querySelector('.current');
-    Current.innerHTML = `${result}`;
-
-    const Choice = document.querySelector('.choice');
-    Choice.innerHTML = `You 
-        <img src="icons/${variable}-emoji.png" class="move-icon">
-        VS
-        <img src="icons/${computerChoice}-emoji.png" class="move-icon">
-        Computer`;
-
-
-    
-    const Score = document.querySelector('.score');
-    Score.innerHTML = `Wins: ${score.Wins}, Losses: ${score.Loss}, Ties: ${score.Ties}`
-}
-
-    function playGame(humanChoice) {
-
-         choice();
-
-
-        if (humanChoice === 'rock') {
-
-            if (computerChoice === 'rock') {
-                score.Ties++;
-                result = "Draw!";
-
-            } else if (computerChoice === 'paper') {
-                score.Loss++;
-                result = "You LOST!";
-
-            } else if (computerChoice === 'scissors') {
-                score.Wins++;
-                result = "You WON!";
-            }
-
-
-        } else if (humanChoice === 'paper') {
-
-            if (computerChoice === 'paper') {
-                score.Ties++;
-                result = "Draw!";
-
-            } else if (computerChoice === 'scissors') {
-                score.Loss++;
-                result = "You LOST!";
-
-            } else if (computerChoice === 'rock') {
-                score.Wins++;
-                result = "You WON!";
-            }
-
-
-        } else if (humanChoice === 'scissors') {
-
-            if (computerChoice === 'scissors') {
-                score.Ties++;
-                result = "Draw!";
-
-            } else if (computerChoice === 'rock') {
-                score.Loss++;
-                result = "You LOST!";
-
-            } else if (computerChoice === 'paper') {
-                score.Wins++;
-                result = "You WON!";
-            }
-        }
-        localStorage.setItem('save', JSON.stringify(score));
-
-    }
-  
-function resetScore() {
-    score.Wins = 0;
-    score.Loss = 0;
-    score.Ties = 0;
-    
-    
-    const reset = document.querySelector('.score');
-    reset.innerHTML = `Wins: ${score.Wins}, Losses: ${score.Loss}, Ties: ${score.Ties}`
-    localStorage.removeItem('save');
-    alert("Score Reset!");
-}
-
-
-</script>
+   <script src="script.js"></script>
 
 </body>
 </html>
