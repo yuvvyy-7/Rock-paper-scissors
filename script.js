@@ -39,7 +39,47 @@ let computerChoice;
     Score.innerHTML = `Wins: ${score.Wins}, Losses: ${score.Loss}, Ties: ${score.Ties}`
 }
 
-    function playGame(humanChoice) {
+
+document.querySelector('.js-rock-button')
+    .addEventListener('click', () => {
+        playGame('rock');
+       
+    });
+
+document.querySelector('.js-paper-button')
+    .addEventListener('click', () => {
+        playGame('paper');
+       
+    });
+
+document.querySelector('.js-scissors-button')
+    .addEventListener('click', () => {
+        playGame('scissors');
+       
+    });
+
+document.querySelector('.js-reset-button')
+    .addEventListener('click', () => {
+        resetScore();
+    })
+
+document.querySelector('.js-autoPlay-button')
+    .addEventListener('click', () => {
+        toggleAutoPlay();
+    })
+
+
+document.body.addEventListener('keydown', (event) => {
+    if (event.key === 'r'){
+        playGame('rock');
+    } else if (event.key === 'p') {
+        playGame('paper');
+    } else if (event.key === 's') {
+        playGame('scissors');
+    }
+});
+
+function playGame(humanChoice) {
 
          choice();
 
@@ -91,7 +131,9 @@ let computerChoice;
                 result = "You WON!";
             }
         }
+        updateCurrent(humanChoice);
         localStorage.setItem('save', JSON.stringify(score));
+       
 
     }
   

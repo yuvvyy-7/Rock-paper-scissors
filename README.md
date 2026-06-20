@@ -5,3 +5,4 @@ a fully functional rock paper scissors game using WEB3
 - DOM, localStorage from JS
 - simple HTML & CSS
 - setInterval / clearInterval
+- used addEventListener instead of onclick attributes

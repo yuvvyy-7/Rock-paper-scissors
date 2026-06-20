@@ -41,5 +41,6 @@ body {
                 padding: 9px 15px;
                 font-size: 15px;
                 background-color: rgb(180, 183, 185);
+                cursor: pointer;
             }
     
