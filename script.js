@@ -107,3 +107,32 @@ function resetScore() {
     alert("Score Reset!");
 }
 
+function autoPlay() {
+    let num = Math.random();
+    let autoHumanChoice;
+
+    if (num > 0 && num <= 1/3) {
+        autoHumanChoice = 'rock';
+    } else if (num > 1/3 && num <= 2/3) {
+        autoHumanChoice = 'paper';
+    } else if (num > 2/3 && num <= 1) {
+        autoHumanChoice = 'scissors';
+    }
+   
+    playGame(autoHumanChoice);
+    updateCurrent(autoHumanChoice);
+}
+
+let intervalId;
+
+function toggleAutoPlay() {
+    const buttonTxt = document.querySelector('.auto-play');
+
+    if (buttonTxt.textContent === 'Auto Play') {
+        buttonTxt.textContent = 'Stop Play';
+        intervalId = setInterval(autoPlay, 1500);
+    } else {
+        buttonTxt.textContent = 'Auto Play';
+        clearInterval(intervalId);
+    }
+}
