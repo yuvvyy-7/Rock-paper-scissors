@@ -58,10 +58,7 @@ document.querySelector('.js-scissors-button')
        
     });
 
-document.querySelector('.js-reset-button')
-    .addEventListener('click', () => {
-        resetScore();
-    })
+
 
 document.querySelector('.js-autoPlay-button')
     .addEventListener('click', () => {
@@ -78,6 +75,24 @@ document.body.addEventListener('keydown', (event) => {
         playGame('scissors');
     }
 });
+const dialog = document.querySelector('.reset-dialog');
+
+document.querySelector('.js-reset-button')
+    .addEventListener('click', () => {
+        dialog.classList.remove('remove');
+    })
+
+document.querySelector('.dialog-yes-button')
+.addEventListener('click', () => {
+    resetScore();
+    dialog.classList.add('remove');
+})
+
+document.querySelector('.dialog-no-button')
+.addEventListener('click', () => {
+    dialog.classList.add('remove');
+})
+
 
 function playGame(humanChoice) {
 

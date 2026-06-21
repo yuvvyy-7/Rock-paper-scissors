@@ -37,10 +37,29 @@ body {
 
     .reset-button,
     .auto-play {
-                border: 0;
+                border: none;
                 padding: 9px 15px;
-                font-size: 15px;
+                font-size: 16px;
                 background-color: rgb(180, 183, 185);
                 cursor: pointer;
             }
-    
+
+    .reset-dialog {
+        border: none;
+        background-color: black;
+        width: 420px;
+        margin-top: 10px;
+        padding: 10px;
+        border: 1px solid white;
+        border-radius: 4px;
+    }
+    .dialog-yes-button,
+    .dialog-no-button {
+        font-size: 20px;
+        margin-left: 10px;
+        cursor: pointer;
+    }
+
+    .remove {
+        display: none;
+    }
